@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" type="text/css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css" />
-	<title>Jekyll+GitHub API+JS=Dynamic CMS :-)</title>
+	<title>Create new post at Debian TW</title>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,22 @@
 	
 	<div id="messages"></div>
 	<form id="theform" method="get">
+
 		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Author" id="p_author" name="author">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Category" id="p_category" name="category">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Icon" id="p_icon" name="icon">
+			<p>Icons name please refer to 
+			<a href="http://fontawesome.io/icons/" target="_blank">this link</a>
+			</p>
+		</div>
+		
+		<div class="form-group">
+			
 			<input type="text" class="form-control" placeholder="Post Title" id="p_title" name="title">
 		</div>
 		<div class="form-group">
@@ -112,14 +127,20 @@
 		var user = $('#username').val() ;
 		var password = $('#password').val() ;
 		var title = $('#p_title').val() ;
-
+		var author = $('#p_author').val() ;
+		var category = $('#p_category').val() ;
+		var icon = $('#p_icon').val() ;
 		var p_body = '---\n' ;
+		
 		p_body = p_body + 'layout: post \n' ;
 		p_body = p_body + 'title:  "' + title +'" \n';
-		p_body = p_body + 'date:   '+ post_date() +' \n' ;
-		/* Setting the category here is not the most elegant way...
-		p_body = p_body + 'categories: tests \n';
-		*/
+		p_body = p_body + 'author:  "' + author +'" \n';
+		p_body = p_body + 'category:  "' + category +'" \n';
+		p_body = p_body + 'icon:  "' + icon +'" \n';
+		/*p_body = p_body + 'date:   '+ post_date() +' \n' ;*/
+		p_body = p_body + 'tags: featured \n';
+		
+		
 		p_body = p_body + '---\n';
 		p_body = p_body + '\n' + $('#p_body').val();
 
@@ -127,7 +148,7 @@
 		$.ajax({
 			dataType: "json",
 			contentType: 'application/json; charset=UTF-8',
-			url: API_NEW_POST+post_file(title)+'.markdown',
+			url: API_NEW_POST+post_file(title)+'.md',
 			type: "PUT",
 			data: JSON.stringify({
 				content: btoa(unescape(encodeURIComponent(p_body))),
