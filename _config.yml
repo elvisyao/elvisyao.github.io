@@ -122,3 +122,9 @@ defaults:
 # to initialize arrays in assignments (assign myarr = site.empty_array)
 # (easier to grok than assign myarr = '' | split',')
 empty_array: []
+
+# to generate post (jekyll-post-via-web)
+
+github:
+  repo: elvisyao/elvisyao.github.io
+  branch: master
