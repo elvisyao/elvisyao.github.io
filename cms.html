@@ -125,9 +125,8 @@
 		p_body = p_body + 'layout: post \n' ;
 		p_body = p_body + 'title:  "' + title +'" \n';
 		p_body = p_body + 'date:   '+ post_date() +' \n' ;
-		/* Setting the category here is not the most elegant way...
-		p_body = p_body + 'categories: tests \n';
-		*/
+		p_body = p_body + 'tags: featured \n';
+		/*p_body = p_body + 'categories: tests \n';*/
 		p_body = p_body + '---\n';
 		p_body = p_body + '\n' + $('#p_body').val();
 
