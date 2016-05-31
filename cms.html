@@ -27,8 +27,16 @@
 	{% endif %}
 	<div id="messages"></div>
 	<form id="theform" method="get">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Author" id="p_author" name="title">
+		<div class="form-inline">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Author" id="p_author" name="author">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Category" id="p_category" name="category">
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Icon" id="p_icon" name="icon">
+			</div>
 		</div>
 		<div class="form-group">
 			<input type="text" class="form-control" placeholder="Post Title" id="p_title" name="title">
@@ -124,14 +132,19 @@
 		var password = $('#password').val() ;
 		var title = $('#p_title').val() ;
 		var author = $('#p_author').val() ;
-		
+		var category = $('#p_category').val() ;
+		var icon = $('#p_icon').val() ;
 		var p_body = '---\n' ;
+		
 		p_body = p_body + 'layout: post \n' ;
 		p_body = p_body + 'title:  "' + title +'" \n';
 		p_body = p_body + 'author:  "' + author +'" \n';
+		p_body = p_body + 'category:  "' + category +'" \n';
+		p_body = p_body + 'icon:  "' + icon +'" \n';
 		/*p_body = p_body + 'date:   '+ post_date() +' \n' ;*/
 		p_body = p_body + 'tags: featured \n';
-		/*p_body = p_body + 'categories: tests \n';*/
+		
+		
 		p_body = p_body + '---\n';
 		p_body = p_body + '\n' + $('#p_body').val();
 
